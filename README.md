@@ -1,4 +1,5 @@
 # Clean-OS-for-S20-FE
+this script can be used for atleast any dynamic partition samsung device
 This zip contains all the codes required to flash your modified files into the system
 Put your system.img in place of the system.img file in there
 Put your boot.img with custom kernel installed and magisk if you want too ( You can pull the boot.img from your devie by using termux)
