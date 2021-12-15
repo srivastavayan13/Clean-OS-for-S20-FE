@@ -1,0 +1,237 @@
+v#-----------Dynamic Installer Configs-----------#
+#The #MAGISK tag is required, dont remove it
+#MAGISK
+setdefault magisk_support on
+setdefault run_addons off
+setdefault apex_mount off
+setdefault extraction_speed default
+setdefault devices off
+#-----------------------------------------------#
+#Your script starts here:
+
+ui_print "--------------------------------"
+ui_print "          CleanOS          "
+ui_print "          OneUI 3.1            "
+ui_print "--------------------------------"
+ui_print "           by AYAN          "
+ui_print "--------------------------------"
+ui_print " "
+
+ui_print "-------------------"
+ui_print " UNMOUNT           "
+ui_print "-------------------"
+ui_print " "
+umount_all
+
+#Installing system
+ui_print "-------------------"
+ui_print " INSTALLING SYSTEM  "
+ui_print "-------------------"
+ui_print " "
+update_zip system.img "$(find_block system)"
+
+#Installing Kernel
+ui_print "-------------------"
+ui_print " INSTALLING KERNEL	 "
+ui_print "-------------------"
+ui_print " "
+update_zip boot.img "$(find_block boot)"
+
+#Removing Boot Warning
+ui_print "-------------------"
+ui_print " Removing Boot Warning	 "
+ui_print "-------------------"
+ui_print " "
+update_zip up_param.tar "$(find_block up_param)"
+
+
+#Installing any external zip you like with your build
+ui_print "-------------------"
+ui_print " Installing zip name	 "
+ui_print "-------------------"
+ui_print " "
+
+#defined extract zipname.zip
+flash_addon log1 zipname.zip
+
+#mounting partitions
+ui_print " "
+ui_print " -- Mounting partitions..."
+auto_mount_partitions
+
+# Vendor Tweaks
+ui_print "-------------------"
+ui_print " Vendor Tweaks "
+ui_print "-------------------"
+ui_print " "
+package_extract_dir "clean/vendor" /vendor
+
+# System Tweaks
+ui_print "-------------------"
+ui_print " System Tweaks "
+ui_print "-------------------"
+ui_print " "
+package_extract_dir "clean/mods/system" /system
+
+#Extra App Installer
+ui_print "-------------------"
+ui_print " Restore/Install Apps "
+ui_print "-------------------"
+ui_print " "
+
+#Install APP 1
+
+press() {
+  ui_print " Install App 1"
+    ui_print " __________________________________  "
+    ui_print "| Volume up = INSTALL        | "
+    ui_print "| Volume down = DONT INSTALL      | "
+    ui_print " ----------------------------------  "
+}
+
+press
+if $yes; then
+   install=true
+else
+   install=false
+fi
+
+if is_equal "$install" "true"; then
+ui_print " -- Installing App1..."
+package_extract_dir "clean/restore/app1/system" /system
+
+
+fi
+
+#Install App 2
+
+press() {
+  ui_print " Install App 2"
+    ui_print " __________________________________  "
+    ui_print "| Volume up = INSTALL        | "
+    ui_print "| Volume down = DONT INSTALL      | "
+    ui_print " ----------------------------------  "
+}
+
+press
+if $yes; then
+   install=true
+else
+   install=false
+fi
+
+if is_equal "$install" "true"; then
+ui_print " -- Installing App 2..."
+package_extract_dir "clean/restore/App 2/system" /system
+
+fi
+
+#Install App 3
+
+press() {
+  ui_print " Install App 3"
+    ui_print " __________________________________  "
+    ui_print "| Volume up = INSTALL        | "
+    ui_print "| Volume down = DONT INSTALL      | "
+    ui_print " ----------------------------------  "
+}
+
+press
+if $yes; then
+   install=true
+else
+   install=false
+fi
+
+if is_equal "$install" "true"; then
+ui_print " -- Installing App 3..."
+package_extract_dir "clean/restore/App 3/system" /system
+
+fi
+
+#Install App 4
+
+press() {
+  ui_print " Install App 4"
+    ui_print " __________________________________  "
+    ui_print "| Volume up = INSTALL        | "
+    ui_print "| Volume down = DONT INSTALL      | "
+    ui_print " ----------------------------------  "
+}
+
+press
+if $yes; then
+   install=true
+else
+   install=false
+fi
+
+if is_equal "$install" "true"; then
+ui_print " -- Installing App 4..."
+package_extract_dir "clean/restore/App 4/system" /system
+
+fi
+
+#Install App 5
+
+press() {
+  ui_print " install App 5"
+    ui_print " __________________________________  "
+    ui_print "| Volume up = INSTALL        | "
+    ui_print "| Volume down = DONT INSTALL      | "
+    ui_print " ----------------------------------  "
+}
+
+press
+if $yes; then
+   install=true
+else
+   install=false
+fi
+
+if is_equal "$install" "true"; then
+ui_print " -- Installing App 5..."
+package_extract_dir "clean/restore/App 5/system" /system
+
+fi
+
+#Install App 6
+
+press() {
+  ui_print " install App 6"
+    ui_print " __________________________________  "
+    ui_print "| Volume up = INSTALL        | "
+    ui_print "| Volume down = DONT INSTALL      | "
+    ui_print " ----------------------------------  "
+}
+
+press
+if $yes; then
+   install=true
+else
+   install=false
+fi
+
+if is_equal "$install" "true"; then
+ui_print " -- Installing App 6..."
+package_extract_dir "clean/restore/App 6" /system
+
+fi
+
+ui_print " -- Unmounting ALL"
+umount_all
+
+#Installing MultiDisabler
+ui_print "-------------------"
+ui_print " Installing MultiDisabler	 "
+ui_print "-------------------"
+ui_print " "
+
+#defined extract multidisabler.zip
+flash_addon log1 multidisabler.zip
+
+ui_print "-------------------"
+ui_print " DONE              "
+ui_print "-------------------"
+ui_print " "
+
