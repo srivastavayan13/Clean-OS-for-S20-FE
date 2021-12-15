@@ -11,3 +11,4 @@ Now coming to the clean folder it contains
 3. Restore - you can use to restore or install any app you want. Create a new folder with your app name under which create a folder named system then create at which path in system you want to add those app like either in app or priv-app and then create a folder with your app name again and under which put the apk file
 4. Meta-Info folder has addons folder which you can use to flash external zip you want to flash with your build, in my case i have put multidisabler to be flashed with my build. Check updater-script for the same 
 5. Update Updater-script as per your requirement. I have given many option and for installing apps i have given option to either install or dont install them, leaving choice for the end-user whether they want a particular app or not
+system.img, boot.img and up_param.tar are dummy files in here replace them with your own file if you want to use the script
